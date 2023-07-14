@@ -1,0 +1,41 @@
+.box{
+    padding:25px;
+    margin:10px 0;
+    color:#ffffff;
+    background-color: #000000;
+    border:2px solid yellow;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+}
+
+.box-2{
+    padding:25px;
+    margin:10px 0;
+    color:#000000;
+    background-color: #ff0000;
+    border:2px solid yellow;
+    border-radius:10px;
+    max-width: 100px;
+    display:flex;
+    justify-content:center;
+}
+
+.hello {
+    top: 25%;
+    left: 200px;
+}
+
+.relative{
+    position:relative;
+}
+
+.absolute{
+    position:absolute;
+}
+
+.fixed{
+    position:fixed;
+    top:70%;
+    bottom:50px;
+}

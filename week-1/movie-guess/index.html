@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Guess Game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>Movie Guessing Game</h1>
+    <button onclick="startGame()">Start Game</button>
+    <div id="game-container" style="display: none;">
+      <h2 id="title"></h2>
+      <p id="explanation"></p>
+      <p id="hint"></p>
+      <input type="text" id="guess-input" placeholder="Enter your guess">
+      <button id="guess-button" onclick="checkGuess()" disabled>Guess</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      const movies = [
+        {
+          title: "Harry Potter",
+          explanation: "This movie is about a dude with a stick...",
+          hint: "It's Magic",
+        },
+        {
+          title: "Just Go With It",
+          explanation: "This movie is about people who go on holiday...",
+          hint: "Adam, Drew and Jennifer",
+        },
+        {
+          title: "Never Back Down",
+          explanation:
+            "This movie is about two guys with daddy issues who beat each other up...",
+          hint: "Kanye West - Stronger",
+        },
+        {
+          title: "Spongebob Squarepants",
+          explanation: "This movie is about a rectangle...",
+          hint: "It's a cartoon",
+        },
+        {
+          title: "50 First Dates",
+          explanation:
+            "This movie is about a chick, she has the worst memory...",
+          hint: "50 times...",
+        },
+        {
+          title: "Cars",
+          explanation: "In this movie, car go fast...",
+          hint: "Kachow",
+        },
+        {
+          title: "Spiderman",
+          explanation:
+            "In this movie this guy just does not pay his rent, no matter how many times the landlord asks...",
+          hint: "Peta-Paka",
+        },
+        {
+          title: "The Wolf Of Wall Street",
+          explanation:
+            "In this movie there's like illegal stuff, lots of money, and a blonde chick...",
+          hint: "HAWOOooooooooooo",
+        },
+        {
+          title: "Inception",
+          explanation:
+            "In this movie everyone is like sleeping all the time...",
+          hint: "Dreams...",
+        },
+        {
+          title: "Peter Pan",
+          explanation:
+            "In this movie some kids die and an angel escorts them to heaven...",
+          hint: "Always flying, cuz he neverlands",
+        },
+        {
+          title: "The Lord Of The Rings",
+          explanation: "In this movie some small guys go for a walk...",
+          hint: "You will not vacate past this exact position",
+        },
+      ];
+
+      function startGame() {
+        const randomIndex = Math.floor(Math.random() * movies.length);
+        const currentMovie = movies[randomIndex];
+        const titleElement = document.getElementById("title");
+        const explanationElement = document.getElementById("explanation");
+        const hintElement = document.getElementById("hint");
+        const guessButton = document.getElementById("guess-button");
+        const resultElement = document.getElementById("result");
+
+        titleElement.textContent = currentMovie.title;
+        explanationElement.textContent = currentMovie.explanation;
+        hintElement.textContent = currentMovie.hint;
+        resultElement.textContent = "";
+
+        guessButton.disabled = false;
+      }
+
+      function checkGuess() {
+        const guessInput = document.getElementById("guess-input");
+        const guess = guessInput.value.toLowerCase();
+        const currentMovie = movies.find(
+          (movie) => movie.title.toLowerCase() === guess
+        );
+        const resultElement = document.getElementById("result");
+
+        if (currentMovie) {
+          resultElement.textContent = "Congratulations! You guessed it!";
+        } else {
+          resultElement.textContent = "Sorry, wrong guess. Try again!";
+        }
+
+        guessInput.value = "";
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+      const startButton = document.querySelector('button');
+      const gameContainer = document.getElementById('game-container');
+      
+      startButton.addEventListener('click', function() {
+        startButton.style.display = 'none';
+        gameContainer.style.display = 'block';
+        startGame();
+      });
+    });
+
+    </script>
+  </body>
+</html>

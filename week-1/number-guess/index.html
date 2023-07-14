@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guess Game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="text-center pt-5">
+      <h3>Number Guess Game</h3>
+
+      <p>Enter a number from 1 to 10</p>
+
+
+      <div class="input-group mb-3 pl-5 pr-5">
+        <input type="text" class="form-control" id="guessInput" placeholder="number">
+        <button class="btn btn-primary" id="enter">Enter</button>
+      </div>
+
+      <div class="text-center">
+        <p id="guessedNumber">You guessed: </p>
+      </div>
+      
+    </div>
+    
+    <script>
+        document.getElementById("enter").addEventListener("click", function() {
+            let guessInput = document.getElementById("guessInput");
+            let guessedNumber = guessInput.value;
+            console.log("You entered: " + guessedNumber);
+            guessInput.value = "";
+            document.getElementById("guessedNumber").textContent = "You guessed: " + guessedNumber;
+            isCorrect(guessedNumber); 
+        });
+
+        function isCorrect(guessedNumber) {
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            if (randomNumber === parseInt(guessedNumber)) {
+                document.getElementById("guessedNumber").textContent += " (Correct!)";
+                console.log("Correct!");
+            } else {
+                document.getElementById("guessedNumber").textContent += " (Incorrect)";
+                console.log("Incorrect, the correct answer is: " + randomNumber);
+            }
+        }
+    </script>
+  </body>
+</html>
